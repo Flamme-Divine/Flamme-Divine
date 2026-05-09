@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Flamme Divine</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#faf6ef]">
+  <div class="min-h-screen">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-[#faf6ef]/85 backdrop-blur-md border-b border-[#8b5a3c]/10">
+      <nav class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+          <svg width="36" height="44" viewBox="0 0 36 44" class="text-[#8b5a3c]">
+            <path d="M18 2 C 22 10, 28 12, 28 22 C 28 31, 23 38, 18 42 C 13 38, 8 31, 8 22 C 8 15, 14 12, 18 2 Z" fill="#e8743c"/>
+          </svg>
+          <span class="font-bold text-[#8b5a3c]">Flamme Divine</span>
+        </a>
+        <div class="hidden md:flex gap-6 text-[#5c4534]">
+          <a href="index.html">Accueil</a>
+          <a href="bible.html">Bible</a>
+          <a href="quiz.html">Quiz</a>
+          <a href="guide.html">Guide</a>
+          <a href="blog.html" class="text-[#e8743c]">Blog</a>
+        </div>
+        <button class="md:hidden" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8b5a3c" stroke-width="2">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+        </button>
+      </nav>
+      <div id="mobile-menu" class="hidden md:hidden bg-[#faf6ef] border-t border-[#8b5a3c]/10 px-4 py-2">
+        <a href="index.html" class="block py-2">Accueil</a>
+        <a href="bible.html" class="block py-2">Bible</a>
+        <a href="quiz.html" class="block py-2">Quiz</a>
+        <a href="guide.html" class="block py-2">Guide</a>
+        <a href="blog.html" class="block py-2 text-[#e8743c]">Blog</a>
+      </div>
+    </header>
+
+    <!-- Contenu -->
+    <main class="max-w-4xl mx-auto px-4 py-20">
+      <h1 class="text-3xl font-bold text-[#8b5a3c] mb-4 text-center">Blog Spirituel</h1>
+      <p class="text-center text-[#5c4534] mb-8">Des articles pour nourrir ta flamme.</p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h2 class="text-xl font-bold text-[#8b5a3c] mb-2">Comment raviver ta flamme spirituelle ?</h2>
+          <p class="text-[#5c4534] mb-4">Découvre 5 étapes pour retrouver la passion dans ta relation avec Dieu.</p>
+          <a href="article.html?title=raviver-flamme" class="text-[#e8743c] hover:underline">Lire l'article →</a>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h2 class="text-xl font-bold text-[#8b5a3c] mb-2">Le pouvoir de la prière</h2>
+          <p class="text-[#5c4534] mb-4">Découvre comment la prière peut transformer ta vie.</p>
+          <a href="article.html?title=pouvoir-priere" class="text-[#e8743c] hover:underline">Lire l'article →</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 border-t border-[#8b5a3c]/10 text-[#5c4534]">
+      <p>© 2026 Flamme Divine | « Que ta flamme brûle éternellement. »</p>
+    </footer>
+  </div>
+</body>
+</html>
