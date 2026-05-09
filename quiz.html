@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz | Flamme Divine</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#faf6ef]">
+  <div class="min-h-screen">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-[#faf6ef]/85 backdrop-blur-md border-b border-[#8b5a3c]/10">
+      <nav class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+          <svg width="36" height="44" viewBox="0 0 36 44" class="text-[#8b5a3c]">
+            <path d="M18 2 C 22 10, 28 12, 28 22 C 28 31, 23 38, 18 42 C 13 38, 8 31, 8 22 C 8 15, 14 12, 18 2 Z" fill="#e8743c"/>
+          </svg>
+          <span class="font-bold text-[#8b5a3c]">Flamme Divine</span>
+        </a>
+        <div class="hidden md:flex gap-6 text-[#5c4534]">
+          <a href="index.html">Accueil</a>
+          <a href="bible.html">Bible</a>
+          <a href="quiz.html" class="text-[#e8743c]">Quiz</a>
+          <a href="guide.html">Guide</a>
+          <a href="blog.html">Blog</a>
+        </div>
+        <button class="md:hidden" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8b5a3c" stroke-width="2">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+        </button>
+      </nav>
+      <div id="mobile-menu" class="hidden md:hidden bg-[#faf6ef] border-t border-[#8b5a3c]/10 px-4 py-2">
+        <a href="index.html" class="block py-2">Accueil</a>
+        <a href="bible.html" class="block py-2">Bible</a>
+        <a href="quiz.html" class="block py-2 text-[#e8743c]">Quiz</a>
+        <a href="guide.html" class="block py-2">Guide</a>
+        <a href="blog.html" class="block py-2">Blog</a>
+      </div>
+    </header>
+
+    <!-- Contenu -->
+    <main class="max-w-2xl mx-auto px-4 py-20">
+      <div id="quiz-app">
+        <h1 class="text-3xl font-bold text-[#8b5a3c] mb-4 text-center">Quiz Biblique</h1>
+        <p class="text-center text-[#5c4534] mb-8">Teste tes connaissances avec 10 questions aléatoires !</p>
+
+        <!-- Sélection de la difficulté -->
+        <div class="flex justify-center gap-4 mb-8">
+          <button onclick="startQuiz('facile')" class="bg-[#d4a04c] text-white px-4 py-2 rounded-lg">Facile</button>
+          <button onclick="startQuiz('moyen')" class="bg-[#8b5a3c] text-white px-4 py-2 rounded-lg">Moyen</button>
+          <button onclick="startQuiz('difficile')" class="bg-[#e8743c] text-white px-4 py-2 rounded-lg">Difficile</button>
+        </div>
+
+        <!-- Quiz -->
+        <div id="quiz-container" class="hidden">
+          <div id="question-container" class="bg-white p-6 rounded-xl shadow-lg mb-4">
+            <h2 id="question-text" class="text-xl font-bold text-[#8b5a3c] mb-4"></h2>
+            <div id="options" class="space-y-2"></div>
+          </div>
+          <div class="flex justify-between text-[#5c4534] mb-4">
+            <span>Question <span id="question-num">1</span>/10</span>
+            <span>Score: <span id="score">0</span></span>
+          </div>
+          <button id="next-btn" onclick="nextQuestion()" class="bg-[#e8743c] text-white px-6 py-2 rounded-lg w-full">Suivant</button>
+        </div>
+
+        <!-- Résultat -->
+        <div id="result-container" class="hidden text-center">
+          <h2 class="text-2xl font-bold text-[#8b5a3c] mb-4">Résultat: <span id="final-score">0</span>/10</h2>
+          <p id="result-message" class="mb-4"></p>
+          <button onclick="startQuiz('moyen')" class="bg-[#e8743c] text-white px-6 py-2 rounded-lg">Recommencer</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 border-t border-[#8b5a3c]/10 text-[#5c4534]">
+      <p>© 2026 Flamme Divine</p>
+    </footer>
+  </div>
+  <script>
+    const questions = {
+      facile: [
+        { q: "Quel est le premier livre de la Bible ?", options: ["Genèse", "Exode", "Psaumes", "Matthieu"], correct: 0 },
+        { q: "Qui a construit l'arche ?", options: ["Moïse", "Noé", "Abraham", "David"], correct: 1 },
+        { q: "Dans quelle ville Jésus est-il né ?", options: ["Nazareth", "Jérusalem", "Bethléem", "Capernaüm"], correct: 2 }
+      ],
+      moyen: [
+        { q: "Quel roi a construit le temple de Jérusalem ?", options: ["David", "Salomon", "Saül", "Ézéchias"], correct: 1 },
+        { q: "Quel prophète a été avalé par un grand poisson ?", options: ["Élie", "Élisée", "Jonas", "Daniel"], correct: 2 },
+        { q: "Quel est le plus court verset de la Bible ?", options: ["Jésus pleura", "Dieu est amour", "Au commencement", "Que la lumière soit"], correct: 0 }
+      ],
+      difficile: [
+        { q: "Quel est le nom du père de David ?", options: ["Saül", "Jesse", "Joab", "Abner"], correct: 1 },
+        { q: "Quel prophète a prédit la naissance de Jésus à Bethléem ?", options: ["Ésaïe", "Jérémie", "Michée", "Zacharie"], correct: 2 },
+        { q: "Quel est le dernier livre de la Bible ?", options: ["Malachie", "Apocalypse", "Jude", "3 Jean"], correct: 1 }
+      ]
+    };
+
+    let currentQuestions = [];
+    let currentIndex = 0;
+    let score = 0;
+
+    function startQuiz(difficulty) {
+      currentQuestions = [...questions[difficulty]].sort(() => Math.random() - 0.5).slice(0, 10);
+      currentIndex = 0;
+      score = 0;
+      document.getElementById('quiz-container').classList.remove('hidden');
+      document.getElementById('result-container').classList.add('hidden');
+      showQuestion();
+    }
+
+    function showQuestion() {
+      const q = currentQuestions[currentIndex];
+      document.getElementById('question-text').textContent = q.q;
+      document.getElementById('question-num').textContent = currentIndex + 1;
+      document.getElementById('score').textContent = score;
+
+      const optionsContainer = document.getElementById('options');
+      optionsContainer.innerHTML = '';
+      q.options.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.textContent = opt;
+        btn.className = 'w-full text-left p-3 bg-[#faf6ef] border border-[#8b5a3c] rounded-lg mb-2 hover:bg-[#f2ead9]';
+        btn.onclick = () => selectAnswer(i, q.correct);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(selected, correct) {
+      if (selected === correct) {
+        score++;
+        document.getElementById('score').textContent = score;
+      }
+      if (currentIndex < 9) {
+        currentIndex++;
+        showQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      document.getElementById('quiz-container').classList.add('hidden');
+      document.getElementById('result-container').classList.remove('hidden');
+      document.getElementById('final-score').textContent = score;
+
+      let message = '';
+      if (score >= 8) message = 'Incroyable ! Ta flamme brûle fort ! 🔥';
+      else if (score >= 5) message = 'Bien joué ! Continue à nourrir ta foi.';
+      else message = 'Ne t\'inquiète pas, chaque erreur est une leçon. 😊';
+
+      document.getElementById('result-message').textContent = message;
+    }
+
+    function nextQuestion() {
+      if (currentIndex < 9) {
+        currentIndex++;
+        showQuestion();
+      } else {
+        showResult();
+      }
+    }
+  </script>
+</body>
+</html>
