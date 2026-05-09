@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guide | Flamme Divine</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#faf6ef]">
+  <div class="min-h-screen">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-[#faf6ef]/85 backdrop-blur-md border-b border-[#8b5a3c]/10">
+      <nav class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+          <svg width="36" height="44" viewBox="0 0 36 44" class="text-[#8b5a3c]">
+            <path d="M18 2 C 22 10, 28 12, 28 22 C 28 31, 23 38, 18 42 C 13 38, 8 31, 8 22 C 8 15, 14 12, 18 2 Z" fill="#e8743c"/>
+          </svg>
+          <span class="font-bold text-[#8b5a3c]">Flamme Divine</span>
+        </a>
+        <div class="hidden md:flex gap-6 text-[#5c4534]">
+          <a href="index.html">Accueil</a>
+          <a href="bible.html">Bible</a>
+          <a href="quiz.html">Quiz</a>
+          <a href="guide.html" class="text-[#e8743c]">Guide</a>
+          <a href="blog.html">Blog</a>
+        </div>
+        <button class="md:hidden" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8b5a3c" stroke-width="2">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+        </button>
+      </nav>
+      <div id="mobile-menu" class="hidden md:hidden bg-[#faf6ef] border-t border-[#8b5a3c]/10 px-4 py-2">
+        <a href="index.html" class="block py-2">Accueil</a>
+        <a href="bible.html" class="block py-2">Bible</a>
+        <a href="quiz.html" class="block py-2">Quiz</a>
+        <a href="guide.html" class="block py-2 text-[#e8743c]">Guide</a>
+        <a href="blog.html" class="block py-2">Blog</a>
+      </div>
+    </header>
+
+    <!-- Contenu -->
+    <main class="max-w-2xl mx-auto px-4 py-20">
+      <h1 class="text-3xl font-bold text-[#8b5a3c] mb-4 text-center">Guide Spirituel</h1>
+      <p class="text-center text-[#5c4534] mb-8">Un guide pour entretenir ta flamme intérieure.</p>
+
+      <div class="space-y-6">
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h2 class="text-xl font-bold text-[#8b5a3c] mb-2">1. Commence ta journée avec Lui</h2>
+          <p class="text-[#5c4534]">Passe du temps avec Dieu chaque matin avant de commencer ta journée.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h2 class="text-xl font-bold text-[#8b5a3c] mb-2">2. Nourris-toi de Sa Parole</h2>
+          <p class="text-[#5c4534]">Lis un chapitre de la Bible chaque jour pour grandir spirituellement.</p>
+          <a href="bible.html" class="text-[#e8743c] hover:underline">→ Lire la Bible maintenant</a>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h2 class="text-xl font-bold text-[#8b5a3c] mb-2">3. Parle-Lui comme à un ami</h2>
+          <p class="text-[#5c4534]">La prière est une conversation avec Dieu. Parle-Lui de tes joies et de tes peines.</p>
+        </div>
+        <div class="bg-[#faf6ef] p-6 rounded-xl border border-[#8b5a3c]/20 text-center">
+          <h2 class="text-xl font-bold text-[#8b5a3c] mb-2">Télécharge le guide complet</h2>
+          <p class="text-[#5c4534] mb-4">Un PDF de 24 pages avec des prières et des versets pour t'accompagner.</p>
+          <a href="assets/files/guide-flamme-divine.pdf" download class="bg-[#e8743c] text-white px-6 py-3 rounded-lg inline-block">Télécharger le guide</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 border-t border-[#8b5a3c]/10 text-[#5c4534]">
+      <p>© 2026 Flamme Divine | « Que ta flamme brûle éternellement. »</p>
+    </footer>
+  </div>
+</body>
+</html>
