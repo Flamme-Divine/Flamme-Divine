@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bible | Flamme Divine</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    .bible-iframe { width: 100%; height: 600px; border: none; border-radius: 12px; }
+  </style>
+</head>
+<body class="bg-[#faf6ef]">
+  <div class="min-h-screen">
+    <!-- Navigation (même que index.html) -->
+    <header class="sticky top-0 z-50 bg-[#faf6ef]/85 backdrop-blur-md border-b border-[#8b5a3c]/10">
+      <nav class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+          <svg width="36" height="44" viewBox="0 0 36 44" class="text-[#8b5a3c]">
+            <path d="M18 2 C 22 10, 28 12, 28 22 C 28 31, 23 38, 18 42 C 13 38, 8 31, 8 22 C 8 15, 14 12, 18 2 Z" fill="#e8743c"/>
+          </svg>
+          <span class="font-bold text-[#8b5a3c]">Flamme Divine</span>
+        </a>
+        <div class="hidden md:flex gap-6 text-[#5c4534]">
+          <a href="index.html">Accueil</a>
+          <a href="bible.html" class="text-[#e8743c]">Bible</a>
+          <a href="quiz.html">Quiz</a>
+          <a href="guide.html">Guide</a>
+          <a href="blog.html">Blog</a>
+        </div>
+        <button class="md:hidden" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8b5a3c" stroke-width="2">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+        </button>
+      </nav>
+      <div id="mobile-menu" class="hidden md:hidden bg-[#faf6ef] border-t border-[#8b5a3c]/10 px-4 py-2">
+        <a href="index.html" class="block py-2">Accueil</a>
+        <a href="bible.html" class="block py-2 text-[#e8743c]">Bible</a>
+        <a href="quiz.html" class="block py-2">Quiz</a>
+        <a href="guide.html" class="block py-2">Guide</a>
+        <a href="blog.html" class="block py-2">Blog</a>
+      </div>
+    </header>
+
+    <!-- Contenu -->
+    <main class="max-w-4xl mx-auto px-4 py-20">
+      <h1 class="text-3xl font-bold text-[#8b5a3c] mb-4 text-center">Lecteur Bible (YouVersion)</h1>
+      <p class="text-center text-[#5c4534] mb-8">Sélectionne une version et un passage pour commencer ta lecture.</p>
+
+      <!-- Sélecteur de version -->
+      <div class="flex justify-center gap-2 mb-6">
+        <button onclick="setVersion('199')" class="bg-[#e8743c] text-white px-4 py-2 rounded-lg">Louis Segond 1910</button>
+        <button onclick="setVersion('79')" class="bg-[#faf6ef] text-[#8b5a3c] px-4 py-2 rounded-lg border border-[#8b5a3c]">Bible de Jérusalem</button>
+        <button onclick="setVersion('161')" class="bg-[#faf6ef] text-[#8b5a3c] px-4 py-2 rounded-lg border border-[#8b5a3c]">Parole de Vie</button>
+      </div>
+
+      <!-- Sélecteur de livre/chapitre -->
+      <div class="flex justify-center gap-4 mb-6">
+        <select id="book-select" class="px-4 py-2 rounded-lg border border-[#8b5a3c]">
+          <option value="1">Genèse</option>
+          <option value="40">Matthieu</option>
+          <option value="43">Jean</option>
+          <option value="19">Psaumes</option>
+        </select>
+        <input type="number" id="chapter-input" class="px-4 py-2 rounded-lg border border-[#8b5a3c]" min="1" max="150" value="1">
+        <button onclick="loadBible()" class="bg-[#e8743c] text-white px-4 py-2 rounded-lg">Lire</button>
+      </div>
+
+      <!-- Iframe YouVersion -->
+      <div class="bg-white rounded-xl p-4 shadow-lg">
+        <iframe id="bible-iframe" class="bible-iframe" src="https://www.bible.com/fr/bible/199/gen.1.1-5.NEG75"></iframe>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 border-t border-[#8b5a3c]/10 text-[#5c4534]">
+      <p>© 2026 Flamme Divine | Lecteur fourni par <a href="https://youversion.com" class="text-[#e8743c]">YouVersion</a></p>
+    </footer>
+  </div>
+  <script>
+    let currentVersion = '199';
+    function setVersion(version) {
+      currentVersion = version;
+      loadBible();
+    }
+    function loadBible() {
+      const book = document.getElementById('book-select').value;
+      const chapter = document.getElementById('chapter-input').value;
+      const iframe = document.getElementById('bible-iframe');
+      iframe.src = `https://www.bible.com/fr/bible/${currentVersion}/${book}.${chapter}`;
+    }
+    lucide.createIcons();
+  </script>
+</body>
+</html>
