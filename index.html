@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flamme Divine</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #faf6ef;
+      --earth: #8b5a3c;
+      --flame: #e8743c;
+      --gold: #d4a04c;
+    }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--cream);
+      color: var(--earth);
+    }
+    .serif { font-family: 'Fraunces', serif; }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .btn-flame {
+      background: var(--flame);
+      color: white;
+    }
+    .btn-flame:hover { transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid var(--earth);
+      color: var(--earth);
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+  <header class="sticky top-0 bg-cream/80 backdrop-blur-sm border-b border-earth/10">
+    <nav class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-3">
+        <svg width="36" height="44" viewBox="0 0 36 44" class="text-earth">
+          <path d="M18 2 C 22 10, 28 12, 28 22 C 28 31, 23 38, 18 42 C 13 38, 8 31, 8 22 C 8 15, 14 12, 18 2 Z" fill="#e8743c"/>
+        </svg>
+        <span class="serif font-bold text-earth">Flamme Divine</span>
+      </a>
+      <div class="hidden md:flex gap-6 text-earth/80">
+        <a href="index.html" class="hover:text-flame">Accueil</a>
+        <a href="bible.html" class="hover:text-flame">Bible</a>
+        <a href="quiz.html" class="hover:text-flame">Quiz</a>
+        <a href="guide.html" class="hover:text-flame">Guide</a>
+      </div>
+      <button class="md:hidden" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h18M3 6h18M3 18h18"/>
+        </svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden bg-cream border-t border-earth/10 px-4 py-2">
+      <a href="index.html" class="block py-2">Accueil</a>
+      <a href="bible.html" class="block py-2">Bible</a>
+      <a href="quiz.html" class="block py-2">Quiz</a>
+      <a href="guide.html" class="block py-2">Guide</a>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-20">
+    <div class="text-center">
+      <h1 class="serif text-4xl md:text-5xl font-bold text-earth mb-4">
+        Bienvenue sur <span class="text-flame">Flamme Divine</span>
+      </h1>
+      <p class="text-lg text-earth/80 mb-8">
+        Un site pour nourrir ta flamme spirituelle avec la Bible, des quiz, et des ressources chrétiennes.
+      </p>
+      <div class="flex justify-center gap-4">
+        <a href="bible.html" class="btn btn-flame">Lire la Bible</a>
+        <a href="quiz.html" class="btn btn-outline">Faire un quiz</a>
+        <a href="guide.html" class="btn btn-outline">Télécharger le guide</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center py-8 border-t border-earth/10 text-earth/80">
+    <p>© 2026 Flamme Divine | « Que ta flamme brûle éternellement. »</p>
+  </footer>
+</body>
+</html>
